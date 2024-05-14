@@ -6,13 +6,10 @@ import numpy as np
 if __name__ == "__main__":
     pygame.init()
     displayInfo = pygame.display.Info()
-    # print(screenInfo)
     displayWidth = displayInfo.current_w
     displayHeight = displayInfo.current_h
 
-    # screen = pygame.display.set_mode((displayWidth, displayHeight), pygame.FULLSCREEN | pygame.HWACCEL)
-
-    screen = pygame.display.set_mode((displayWidth, displayHeight), pygame.HWACCEL)
+    screen = pygame.display.set_mode((displayWidth, displayHeight), pygame.FULLSCREEN | pygame.HWACCEL)
 
     active = True
     clock = pygame.time.Clock()
@@ -23,7 +20,18 @@ if __name__ == "__main__":
                 if event.key == pygame.K_ESCAPE:
                     active = False
 
-        pixel_array = np.random.randint(0, 256, (displayWidth, displayHeight, 3), dtype=np.uint8) #Generate random pixels
+        colors = [(255, 0, 0),      #red
+                  (0, 255, 0),      #blue
+                  (0, 0, 255),      #green
+                  (0, 0, 0,),       #black
+                  (255, 255, 255),  #white
+                  (0, 255, 255),    #cyan
+                  (255, 0, 255),    #magenta
+                  (255, 255, 0)]    #yeLlow
+
+        colors_2d = np.array(colors)
+        pIndices = np.random.choice(len(colors_2d), size=(displayWidth, displayHeight))
+        pixel_array = colors_2d[pIndices]
         pixel_surface = pygame.surfarray.make_surface(pixel_array)
         screen.blit(pixel_surface, (0, 0))
         pygame.display.flip()
