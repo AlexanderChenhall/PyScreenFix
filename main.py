@@ -5,8 +5,8 @@ import numpy as np
 if __name__ == "__main__":
     pygame.init()
     displayInfo = pygame.display.Info()
-    displayWidth = displayInfo.current_w+2   # Adding 2 to the values and foregoing fullscreen
-    displayHeight = displayInfo.current_h+2  # in order to avoid black bars or the top bar
+    displayWidth = displayInfo.current_w + 2   # Adding 2 to the values and foregoing fullscreen
+    displayHeight = displayInfo.current_h + 2  # in order to avoid black bars or the top bar
 
     screen = pygame.display.set_mode((displayWidth, displayHeight), pygame.HWACCEL)
 
@@ -31,7 +31,9 @@ if __name__ == "__main__":
                     active = False
 
         # Creates an Array containing the indices for their corresponding tuples from colors
-        pIndices = np.random.choice(len(colors_2d), size=(displayWidth, displayHeight))
+        # Here we only calculate for 1/8th of the screen, as we are essentially splitting the
+        # display into 8 zones
+        pIndices = np.random.choice(len(colors_2d), size=(displayWidth // 8, displayHeight))
 
         # Create a new array by indexing colors_2d with pIndices
         pixel_array = colors_2d[pIndices]
@@ -39,7 +41,16 @@ if __name__ == "__main__":
         # Create surface using new 3D array of randomly selected color tuples
         pixel_surface = pygame.surfarray.make_surface(pixel_array)
 
+        # Blit onto each strip of the 8 zones on the screen
         screen.blit(pixel_surface, (0, 0))
+        screen.blit(pixel_surface, (0 + (displayWidth // 8), 0))
+        screen.blit(pixel_surface, (0 + (2 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (3 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (4 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (5 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (6 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (7 * (displayWidth // 8)), 0))
+
         pygame.display.flip()
         clock.tick(60)  # Limit FPS
         pygame.time.delay(1)
