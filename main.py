@@ -27,7 +27,7 @@ if __name__ == "__main__":
                   (255, 255, 255),  #white
                   (0, 255, 255),    #cyan
                   (255, 0, 255),    #magenta
-                  (255, 255, 0)]    #yeLlow
+                  (255, 255, 0)]    #yellow
 
         colors_2d = np.array(colors)
         pIndices = np.random.choice(len(colors_2d), size=(displayWidth, displayHeight))
