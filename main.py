@@ -1,13 +1,12 @@
 import pygame
-import random
 import sys
 import numpy as np
 
 if __name__ == "__main__":
     pygame.init()
     displayInfo = pygame.display.Info()
-    displayWidth = displayInfo.current_w+2  # Adding 2 to the values and foregoing fullscreen
-    displayHeight = displayInfo.current_h+2 # in order to avoid black bars or the top bar
+    displayWidth = displayInfo.current_w+2   # Adding 2 to the values and foregoing fullscreen
+    displayHeight = displayInfo.current_h+2  # in order to avoid black bars or the top bar
 
     screen = pygame.display.set_mode((displayWidth, displayHeight), pygame.HWACCEL)
 
