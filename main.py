@@ -13,22 +13,22 @@ if __name__ == "__main__":
     active = True
     clock = pygame.time.Clock()
 
+    colors = [(255, 0, 0),  # Red       |     Declare tuples for RGB Values
+              (0, 255, 0),  # Blue
+              (0, 0, 255),  # Green
+              (0, 0, 0,),  # Black
+              (255, 255, 255),  # White
+              (0, 255, 255),  # Cyan
+              (255, 0, 255),  # Magenta
+              (255, 255, 0)]  # Yellow
+
+    colors_2d = np.array(colors)  # |     Turn list of lists into a numpy array
+
     while active:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     active = False
-
-        colors = [(255, 0, 0),      # Red       |     Declare tuples for RGB Values
-                  (0, 255, 0),      # Blue
-                  (0, 0, 255),      # Green
-                  (0, 0, 0,),       # Black
-                  (255, 255, 255),  # White
-                  (0, 255, 255),    # Cyan
-                  (255, 0, 255),    # Magenta
-                  (255, 255, 0)]    # Yellow
-
-        colors_2d = np.array(colors)          # |     Turn list of lists into a numpy array
 
         # Creates an Array containing the indices for their corresponding tuples from colors
         pIndices = np.random.choice(len(colors_2d), size=(displayWidth, displayHeight))
