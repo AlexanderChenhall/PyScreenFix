@@ -42,8 +42,8 @@ if __name__ == "__main__":
         pixel_surface = pygame.surfarray.make_surface(pixel_array)
 
         # Blit onto each strip of the 8 zones on the screen
-        screen.blit(pixel_surface, (0, 0))
-        screen.blit(pixel_surface, (0 + (displayWidth // 8), 0))
+        screen.blit(pixel_surface, (0 + (0 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (0 + (1 * (displayWidth // 8)), 0))
         screen.blit(pixel_surface, (0 + (2 * (displayWidth // 8)), 0))
         screen.blit(pixel_surface, (0 + (3 * (displayWidth // 8)), 0))
         screen.blit(pixel_surface, (0 + (4 * (displayWidth // 8)), 0))
