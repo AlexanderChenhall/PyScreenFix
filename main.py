@@ -24,6 +24,16 @@ if __name__ == "__main__":
 
     colors_2d = np.array(colors)  # |     Turn list of lists into a numpy array
 
+    # Calculate the positions of each zone based on the size of the display
+    zonePositions = [(0 * (displayWidth // 8), 0),
+                     (1 * (displayWidth // 8), 0),
+                     (2 * (displayWidth // 8), 0),
+                     (3 * (displayWidth // 8), 0),
+                     (4 * (displayWidth // 8), 0),
+                     (5 * (displayWidth // 8), 0),
+                     (6 * (displayWidth // 8), 0),
+                     (7 * (displayWidth // 8), 0)]
+
     while active:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -42,14 +52,14 @@ if __name__ == "__main__":
         pixel_surface = pygame.surfarray.make_surface(pixel_array)
 
         # Blit onto each strip of the 8 zones on the screen
-        screen.blit(pixel_surface, (0 + (0 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (1 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (2 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (3 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (4 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (5 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (6 * (displayWidth // 8)), 0))
-        screen.blit(pixel_surface, (0 + (7 * (displayWidth // 8)), 0))
+        screen.blit(pixel_surface, (zonePositions[0]))
+        screen.blit(pixel_surface, (zonePositions[1]))
+        screen.blit(pixel_surface, (zonePositions[2]))
+        screen.blit(pixel_surface, (zonePositions[3]))
+        screen.blit(pixel_surface, (zonePositions[4]))
+        screen.blit(pixel_surface, (zonePositions[5]))
+        screen.blit(pixel_surface, (zonePositions[6]))
+        screen.blit(pixel_surface, (zonePositions[7]))
 
         pygame.display.flip()
         clock.tick(60)  # Limit FPS
